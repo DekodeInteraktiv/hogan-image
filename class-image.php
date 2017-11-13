@@ -169,7 +169,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) ) {
 			$this->image_id      = $content['image_id'];
 			$this->image_size    = $content['image_size'];
 			$this->image_content = wp_get_attachment_image( $this->image_id, $this->image_size, false, apply_filters( 'hogan/module/image/render/attr', [] ) );
-			$embed_allowed_html  = apply_filters( 'hogan/module/form/render/caption/allowed_html', [
+			$embed_allowed_html  = apply_filters( 'hogan/module/image/render/caption/allowed_html', [
 				'a' => [
 					'href'  => true,
 					'title' => true,
