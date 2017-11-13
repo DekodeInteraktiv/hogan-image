@@ -18,9 +18,6 @@ if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof Image ) ) {
 	<h2 class="heading"><?php echo $this->heading; ?></h2>
 <?php endif; ?>
 
-<?php echo sprintf( '<figcaption%s>',
-	! empty( $this->figure_wrapper_classes ) ? ' class="' . $this->figure_wrapper_classes . '"' : ''
-); ?>
 <?php echo $this->image_content; ?>
 <?php if ( ! empty( $this->caption ) ) : ?>
 	<?php echo sprintf( '<figcaption%1$s>%2$s</figcaption>',
@@ -28,4 +25,3 @@ if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof Image ) ) {
 		$this->caption
 	); ?>
 <?php endif; ?>
-</figure>
