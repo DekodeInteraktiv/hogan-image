@@ -63,6 +63,13 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) ) {
 		public $figure_wrapper_classes;
 
 		/**
+		 * Figcaption classes for use in template - default is the wp-caption-text.
+		 *
+		 * @var $figure_caption_classes
+		 */
+		public $figure_caption_classes;
+
+		/**
 		 * Module constructor.
 		 */
 		public function __construct() {
@@ -178,9 +185,13 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) ) {
 			] );
 			$this->caption       = apply_filters( 'hogan/module/image/render/show_caption', true ) ? wp_kses( ( $content['caption'] ?: get_post_field( 'post_excerpt', $this->image_id ) ), $embed_allowed_html ) : null;
 
-			$figure_wrapper_classes_array   = apply_filters( 'hogan/module/image/render/figure_wrapper_classes', [ 'size-' . $this->image_size ], $this );
+			$figure_wrapper_classes_array   = apply_filters( 'hogan/module/image/render/figure_wrapper_classes', [ 'wp-caption', 'size-' . $this->image_size ], $this );
 			$figure_wrapper_classes_escaped = array_map( 'esc_attr', $figure_wrapper_classes_array );
 			$this->figure_wrapper_classes   = trim( implode( ' ', array_filter( $figure_wrapper_classes_escaped ) ) );
+
+			$figure_caption_classes_array   = apply_filters( 'hogan/module/image/render/figure_caption_classes', [ 'wp-caption-text' ], $this );
+			$figure_caption_classes_escaped = array_map( 'esc_attr', $figure_caption_classes_array );
+			$this->figure_caption_classes   = trim( implode( ' ', array_filter( $figure_caption_classes_escaped ) ) );
 
 			parent::load_args_from_layout_content( $content );
 		}
