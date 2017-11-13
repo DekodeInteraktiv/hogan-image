@@ -15,7 +15,12 @@ if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof Image ) ) {
 ?>
 
 <?php if ( ! empty( $this->heading ) ) : ?>
-	<h2 class="heading"><?php echo esc_html( $this->heading ); ?></h2>
+	<h2 class="heading"><?php echo $this->heading; ?></h2>
 <?php endif; ?>
 
-<?php echo $this->image_content;
+<figure class="<?php echo $this->figure_wrapper_classes; ?>">
+	<?php echo $this->image_content; ?>
+	<?php if ( ! empty( $this->caption ) ) : ?>
+		<figcaption><?php echo $this->caption; ?></figcaption>
+	<?php endif; ?>
+</figure>
