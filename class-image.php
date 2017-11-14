@@ -114,7 +114,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) ) {
 					'type'          => 'radio',
 					'key'           => $this->field_key . '_image_size',
 					'name'          => 'image_size',
-					'label'         => __( 'Image size', 'nettsteder-mal' ),
+					'label'         => __( 'Image size', 'hogan-image' ),
 					'value'         => is_array( $choices ) && ! empty( $choices ) ? reset( $choices ) : null,
 					// Use the first key in the choices array (default thumbnail)
 					'instructions'  => __( 'Choose Image Size', 'hogan-image' ),
