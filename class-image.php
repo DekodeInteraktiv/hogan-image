@@ -106,16 +106,8 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) ) {
 
 			$fields = [];
 
-			if ( true === apply_filters( 'hogan/module/image/field/heading/enabled', true ) ) {
-				$fields[] =
-					[
-						'type'         => 'text',
-						'key'          => $this->field_key . '_heading',
-						'name'         => 'heading',
-						'label'        => __( 'Heading', 'hogan-image' ),
-						'instructions' => __( 'Optional heading will show only if filled in.', 'hogan-image' ),
-					];
-			}
+			// Heading field can be disabled using filter hogan/module/image/heading/enabled (true/false).
+			hogan_append_heading_field( $fields, $this );
 
 			array_push( $fields,
 				[
