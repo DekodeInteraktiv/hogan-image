@@ -142,18 +142,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) ) {
 				]
 			);
 
-			if ( true === apply_filters( 'hogan/module/image/field/caption/enabled', true ) ) {
-				$fields[] = [
-					'type'         => 'wysiwyg',
-					'key'          => $this->field_key . '_caption',
-					'name'         => 'caption',
-					'label'        => __( 'Caption below the image object.', 'hogan-image' ),
-					'delay'        => true,
-					'tabs'         => apply_filters( 'hogan/module/image/field/caption/tabs', 'all' ),
-					'media_upload' => 0,
-					'toolbar'      => apply_filters( 'hogan/module/image/field/caption/toolbar', 'hogan' ),
-				];
-			}
+			hogan_append_caption_field( $fields, $this );
 
 			return $fields;
 		}
