@@ -3,7 +3,7 @@
  * Plugin Name: Hogan Module: Image
  * Plugin URI: https://github.com/dekodeinteraktiv/hogan-image
  * Description: Image Module for Hogan.
- * Version: 1.0.0-dev
+ * Version: 1.0.0
  * Author: Dekode
  * Author URI: https://dekode.no
  * License: GPL-3.0
@@ -22,8 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-require_once 'class-image.php';
-
 add_action( 'plugins_loaded', __NAMESPACE__ . '\\hogan_load_textdomain' );
 add_action( 'hogan/include_modules', __NAMESPACE__ . '\\hogan_register_module' );
 
@@ -38,5 +36,7 @@ function hogan_load_textdomain() {
  * Register module in Hogan
  */
 function hogan_register_module() {
+	// Include image and register module class.
+	require_once 'class-image.php';
 	\hogan_register_module( new \Dekode\Hogan\Image() );
 }
