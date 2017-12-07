@@ -53,7 +53,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) && class_exists( '\\Dekode\\Hoga
 		 */
 		public function get_fields() : array {
 
-			$choices = apply_filters( 'hogan/module/image/field/choices', [
+			$choices = apply_filters( 'hogan/module/image/image_size/choices', [
 				'thumbnail' => _x( 'Small', 'Image Size', 'hogan-image' ),
 				'medium'    => _x( 'Medium', 'Image Size', 'hogan-image' ),
 				'large'     => _x( 'Large', 'Image Size', 'hogan-image' ),
@@ -70,7 +70,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) && class_exists( '\\Dekode\\Hoga
 			];
 
 			// Merge $args from filter with $defaults
-			$constraints_args = wp_parse_args( apply_filters( 'hogan/module/image/field/constraints', [] ), $constraints_defaults );
+			$constraints_args = wp_parse_args( apply_filters( 'hogan/module/image/image_size/constraints', [] ), $constraints_defaults );
 
 			$fields = [];
 
@@ -98,8 +98,8 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) && class_exists( '\\Dekode\\Hoga
 					//'instructions'  => '',
 					'required'      => 1,
 					'return_format' => 'id',
-					'preview_size'  => apply_filters( 'hogan/module/image/field/preview_size', 'medium' ),
-					'library'       => apply_filters( 'hogan/module/image/field/library', 'all' ),
+					'preview_size'  => apply_filters( 'hogan/module/image/image_size/preview_size', 'medium' ),
+					'library'       => apply_filters( 'hogan/module/image/image_size/library', 'all' ),
 					'min_width'     => $constraints_args['min_width'],
 					'min_height'    => $constraints_args['min_height'],
 					'max_width'     => $constraints_args['max_width'],
