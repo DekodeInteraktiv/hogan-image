@@ -2,8 +2,9 @@
 /**
  * Plugin Name: Hogan Module: Image
  * Plugin URI: https://github.com/dekodeinteraktiv/hogan-image
+ * GitHub Plugin URI: https://github.com/dekodeinteraktiv/hogan-image
  * Description: Image Module for Hogan.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Dekode
  * Author URI: https://dekode.no
  * License: GPL-3.0
@@ -16,6 +17,7 @@
  * @author Dekode
  */
 
+declare( strict_types = 1 );
 namespace Dekode\Hogan\Image;
 
 if ( ! defined( 'ABSPATH' ) ) {

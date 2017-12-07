@@ -5,13 +5,14 @@
  * @package Hogan
  */
 
+declare( strict_types = 1 );
 namespace Dekode\Hogan;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) ) {
+if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) && class_exists( '\\Dekode\\Hogan\\Module' ) ) {
 
 	/**
 	 * Image module class.
@@ -21,53 +22,18 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) ) {
 	class Image extends Module {
 
 		/**
-		 * Image heading - optional
-		 *
-		 * @var string $heading
-		 */
-		public $heading;
-
-		/**
-		 * Image id for optional use in template.
+		 * Image id for the image.
 		 *
 		 * @var $image_id
 		 */
 		public $image_id;
 
 		/**
-		 * Image size for use in template.
+		 * Image size selected in admin.
 		 *
 		 * @var $image_size
 		 */
 		public $image_size;
-
-		/**
-		 * Rendered image content for use in template.
-		 *
-		 * @var $image_content
-		 */
-		public $image_content;
-
-		/**
-		 * WYSIWYG caption - optional
-		 *
-		 * @var string $caption
-		 */
-		public $caption;
-
-		/**
-		 * Figure tag classes for use in template - default is the size-{image_size}.
-		 *
-		 * @var $figure_wrapper_classes
-		 */
-		public $figure_wrapper_classes;
-
-		/**
-		 * Figcaption classes for use in template - default is the wp-caption-text.
-		 *
-		 * @var $figure_caption_classes
-		 */
-		public $figure_caption_classes;
 
 		/**
 		 * Module constructor.
@@ -82,8 +48,10 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) ) {
 
 		/**
 		 * Field definitions for module.
+		 *
+		 * @return array $fields Fields for this module
 		 */
-		public function get_fields() {
+		public function get_fields() : array {
 
 			$choices = apply_filters( 'hogan/module/image/field/choices', [
 				'thumbnail' => _x( 'Small', 'Image Size', 'hogan-image' ),
@@ -148,45 +116,27 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) ) {
 		}
 
 		/**
-		 * Map fields to object variable.
+		 * Map raw fields from acf to object variable.
 		 *
-		 * @param array $content The content value.
+		 * @param array $raw_content Content values.
+		 * @param int   $counter Module location in page layout.
+		 * @return void
 		 */
-		public function load_args_from_layout_content( $content ) {
-			$this->heading       = isset( $content['heading'] ) ? esc_html( $content['heading'] ) : null;
-			$this->image_id      = $content['image_id'];
-			$this->image_size    = $content['image_size'];
-			$this->image_content = wp_get_attachment_image( $this->image_id, $this->image_size, false, apply_filters( 'hogan/module/image/attachment/attr', [] ) );
-			$embed_allowed_html  = apply_filters( 'hogan/module/image/caption/allowed_html', [
-				'a' => [
-					'href'  => true,
-					'title' => true,
-					'class' => [],
-				],
-			] );
-			$this->caption       = apply_filters( 'hogan/module/image/caption/enabled', true ) ? wp_kses( ( $content['caption'] ?: get_post_field( 'post_excerpt', $this->image_id ) ), $embed_allowed_html ) : null;
+		public function load_args_from_layout_content( array $raw_content, int $counter = 0 ) {
 
-			$figure_caption_classes_array   = apply_filters( 'hogan/module/image/figure_caption_classes', [ 'wp-caption-text' ], $this );
-			$figure_caption_classes_escaped = array_map( 'esc_attr', $figure_caption_classes_array );
-			$this->figure_caption_classes   = trim( implode( ' ', array_filter( $figure_caption_classes_escaped ) ) );
+			$this->image_id      = $raw_content['image_id'];
+			$this->image_size    = $raw_content['image_size'];
 
-			parent::load_args_from_layout_content( $content );
-
-			add_filter( 'hogan/module/image/inner_wrapper_tag', function() {
-				return 'figure';
-			} );
-
-			add_filter( 'hogan/module/image/inner_wrapper_classes', function() {
-				return [ 'wp-caption', 'size-' . $this->image_size ];
-			} );
-
+			parent::load_args_from_layout_content( $raw_content, $counter );
 		}
 
 		/**
 		 * Validate module content before template is loaded.
+		 *
+		 * @return bool Whether validation of the module is successful / filled with content.
 		 */
-		public function validate_args() {
-			return ! empty( $this->image_content );
+		public function validate_args() : bool {
+			return ! empty( $this->image_id );
 		}
 	}
 }
