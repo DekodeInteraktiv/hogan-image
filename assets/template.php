@@ -30,9 +30,14 @@ $image_content = wp_get_attachment_image( $this->image_id, $this->image_size, fa
 ?>
 <?php echo sprintf( '<figure%1$s>', ! empty( $figure_classes ) ? ' class="' . $figure_classes . '"' : '' );
 ?>
-<?php if ( ! empty( $this->heading ) ) : ?>
-	<h2 class="heading"><?php echo $this->heading; ?></h2>
-<?php endif; ?>
+
+<?php
+if ( ! empty( $this->heading ) ) {
+	hogan_component( 'heading', [
+		'title' => $this->heading,
+	] );
+}
+?>
 
 <?php echo $image_content; ?>
 
