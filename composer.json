@@ -3,7 +3,7 @@
   "description": "Image Module for Hogan",
   "homepage": "https://github.com/dekodeinteraktiv/hogan-image",
   "type": "wordpress-plugin",
-  "license": "GPL-3.0",
+  "license": "GPL-3.0-or-later",
   "require": {
     "php": ">=7.0",
     "composer/installers": "~1.2",
