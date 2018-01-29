@@ -16,7 +16,11 @@ if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof Image ) ) {
 	return; // Exit if accessed directly.
 }
 
-$figure_classes_array   = apply_filters( 'hogan/module/image/figure_classes', [ 'wp-caption', 'size-' . $this->image_size ], $this );
+if ( empty( $this->image ) ) {
+	return;
+}
+
+$figure_classes_array   = apply_filters( 'hogan/module/image/figure_classes', [ 'wp-caption', 'size-' . $this->image['size'] ], $this );
 $figure_classes_escaped = array_map( 'esc_attr', $figure_classes_array );
 $figure_classes         = trim( implode( ' ', array_filter( $figure_classes_escaped ) ) );
 
@@ -35,14 +39,12 @@ if ( ! empty( $this->heading ) ) {
 	] );
 }
 
-if ( ! empty( $this->image ) ) {
-	echo wp_get_attachment_image(
-		$this->image['id'],
-		$this->image['size'],
-		$this->image['icon'],
-		$this->image['attr']
-	);
-}
+echo wp_get_attachment_image(
+	$this->image['id'],
+	$this->image['size'],
+	$this->image['icon'],
+	$this->image['attr']
+);
 
 $caption = apply_filters( 'hogan/module/image/template/caption', $this->caption, $this );
 
