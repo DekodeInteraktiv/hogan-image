@@ -4,8 +4,7 @@
  *
  * $this is an instance of the Image object.
  * Available properties:
- * $this->image_id (int) Image id for the image.
- * $this->image_size (string) Image size selected in admin.
+ * $this->image (array|null) Image.
  *
  * @package Hogan
  */
@@ -25,8 +24,6 @@ $figure_caption_classes_array   = apply_filters( 'hogan/module/image/figure_capt
 $figure_caption_classes_escaped = array_map( 'esc_attr', $figure_caption_classes_array );
 $figure_caption_classes         = trim( implode( ' ', array_filter( $figure_caption_classes_escaped ) ) );
 
-$image_content = wp_get_attachment_image( $this->image_id, $this->image_size, false, apply_filters( 'hogan/module/image/attachment/attr', [] ) );
-
 ?>
 <?php echo sprintf( '<figure%1$s>', ! empty( $figure_classes ) ? ' class="' . $figure_classes . '"' : '' );
 ?>
@@ -37,11 +34,16 @@ if ( ! empty( $this->heading ) ) {
 		'title' => $this->heading,
 	] );
 }
-?>
 
-<?php echo $image_content; ?>
+if ( ! empty( $this->image ) ) {
+	echo wp_get_attachment_image(
+		$this->image['id'],
+		$this->image['size'],
+		$this->image['icon'],
+		$this->image['attr']
+	);
+}
 
-<?php
 $caption = apply_filters( 'hogan/module/image/template/caption', $this->caption, $this );
 
 if ( ! empty( $caption ) ) : ?>
