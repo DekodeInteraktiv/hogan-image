@@ -137,7 +137,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) && class_exists( '\\Dekode\\Hoga
 		 * @return bool Whether validation of the module is successful / filled with content.
 		 */
 		public function validate_args() : bool {
-			return ! empty( $this->image_id );
+			return ! empty( $this->image );
 		}
 	}
 }
