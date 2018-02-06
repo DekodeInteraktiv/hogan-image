@@ -3,11 +3,7 @@
 ## Installation
 Install the module using Composer `composer require dekodeinteraktiv/hogan-image` or simply by downloading this repository and placing it in `wp-content/plugins`
 
-## Usage
-…
-
 ## Available filters
-
 ### Admin
 - `hogan/module/image/image_size/choices` : Image size choices for image size field.
 Default (will be merged with return filter return values):

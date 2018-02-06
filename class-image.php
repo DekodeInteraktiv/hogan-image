@@ -62,7 +62,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) && class_exists( '\\Dekode\\Hoga
 				'mime_types' => '',
 			];
 
-			// Merge $args from filter with $defaults
+			// Merge $args from filter with $defaults.
 			$constraints_args = wp_parse_args( apply_filters( 'hogan/module/image/image_size/constraints', [] ), $constraints_defaults );
 
 			$fields = [];
@@ -72,12 +72,11 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) && class_exists( '\\Dekode\\Hoga
 
 			array_push( $fields,
 				[
-					'type'          => 'radio',
+					'type'          => 'button_group',
 					'key'           => $this->field_key . '_image_size',
 					'name'          => 'image_size',
 					'label'         => __( 'Image size', 'hogan-image' ),
 					'value'         => is_array( $choices ) && ! empty( $choices ) ? reset( $choices ) : null,
-					// Use the first key in the choices array (default thumbnail)
 					'instructions'  => __( 'Choose Image Size', 'hogan-image' ),
 					'choices'       => $choices,
 					'layout'        => 'horizontal',
@@ -88,7 +87,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) && class_exists( '\\Dekode\\Hoga
 					'key'           => $this->field_key . '_image_id',
 					'name'          => 'image_id',
 					'label'         => __( 'Add Image', 'hogan-image' ),
-					//'instructions'  => '',
 					'required'      => 1,
 					'return_format' => 'id',
 					'preview_size'  => apply_filters( 'hogan/module/image/image_size/preview_size', 'medium' ),
