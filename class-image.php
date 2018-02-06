@@ -72,7 +72,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) && class_exists( '\\Dekode\\Hoga
 
 			array_push( $fields,
 				[
-					'type'          => 'radio',
+					'type'          => 'button_group',
 					'key'           => $this->field_key . '_image_size',
 					'name'          => 'image_size',
 					'label'         => __( 'Image size', 'hogan-image' ),
