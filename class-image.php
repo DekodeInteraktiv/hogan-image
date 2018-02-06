@@ -22,18 +22,11 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) && class_exists( '\\Dekode\\Hoga
 	class Image extends Module {
 
 		/**
-		 * Image id for the image.
+		 * Image
 		 *
-		 * @var $image_id
+		 * @var array|null $image
 		 */
-		public $image_id;
-
-		/**
-		 * Image size selected in admin.
-		 *
-		 * @var $image_size
-		 */
-		public $image_size;
+		public $image = null;
 
 		/**
 		 * Module constructor.
@@ -124,8 +117,16 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) && class_exists( '\\Dekode\\Hoga
 		 */
 		public function load_args_from_layout_content( array $raw_content, int $counter = 0 ) {
 
-			$this->image_id      = $raw_content['image_id'];
-			$this->image_size    = $raw_content['image_size'];
+			if ( ! empty( $raw_content['image_id'] ) ) {
+				$image = wp_parse_args( apply_filters( 'hogan/module/image/image/args', [] ), [
+					'size' => $raw_content['image_size'],
+					'icon' => false,
+					'attr' => apply_filters_deprecated( 'hogan/module/image/attachment/attr', [ [] ], '1.1.0', 'hogan/module/image/image/args' ),
+				] );
+
+				$image['id'] = $raw_content['image_id'];
+				$this->image = $image;
+			}
 
 			parent::load_args_from_layout_content( $raw_content, $counter );
 		}
@@ -136,7 +137,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) && class_exists( '\\Dekode\\Hoga
 		 * @return bool Whether validation of the module is successful / filled with content.
 		 */
 		public function validate_args() : bool {
-			return ! empty( $this->image_id );
+			return ! empty( $this->image );
 		}
 	}
 }
