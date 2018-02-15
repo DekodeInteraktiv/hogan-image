@@ -67,9 +67,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) && class_exists( '\\Dekode\\Hoga
 
 			$fields = [];
 
-			// Heading field can be disabled using filter hogan/module/image/heading/enabled (true/false).
-			hogan_append_heading_field( $fields, $this );
-
 			array_push( $fields,
 				[
 					'type'          => 'button_group',

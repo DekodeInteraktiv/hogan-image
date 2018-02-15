@@ -25,13 +25,6 @@ printf( '<figure class="%s">',
 		apply_filters( 'hogan/module/image/figure_classes', [ 'wp-caption', 'size-' . $this->image['size'] ], $this )
 	) )
 );
-
-if ( ! empty( $this->heading ) ) {
-	hogan_component( 'heading', [
-		'title' => $this->heading,
-	] );
-}
-
 echo wp_get_attachment_image(
 	$this->image['id'],
 	$this->image['size'],
