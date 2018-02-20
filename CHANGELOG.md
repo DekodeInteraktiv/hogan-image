@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+* Added image size classname to wrapper div.
+
 ## [1.2.0]
 ### Breaking Changes
 - Remove heading field, provided from Core in [#53](https://github.com/DekodeInteraktiv/hogan-core/pull/53)

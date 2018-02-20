@@ -121,6 +121,9 @@ if ( ! class_exists( '\\Dekode\\Hogan\\Image' ) && class_exists( '\\Dekode\\Hoga
 
 				$image['id'] = $raw_content['image_id'];
 				$this->image = $image;
+
+				// Add image size classname to wrapper.
+				$this->outer_wrapper_classnames = [ 'hogan-image-size-' . $image['size'] ];
 			}
 
 			parent::load_args_from_layout_content( $raw_content, $counter );
