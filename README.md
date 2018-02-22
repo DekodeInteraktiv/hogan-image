@@ -1,4 +1,4 @@
-# Image Module for [Hogan](https://github.com/dekodeinteraktiv/hogan-image)
+# Image Module for [Hogan](https://github.com/dekodeinteraktiv/hogan-image) [![Build Status](https://travis-ci.org/DekodeInteraktiv/hogan-image.svg?branch=master)](https://travis-ci.org/DekodeInteraktiv/hogan-image)
 
 ## Installation
 Install the module using Composer `composer require dekodeinteraktiv/hogan-image` or simply by downloading this repository and placing it in `wp-content/plugins`
