@@ -1,13 +1,14 @@
 # Changelog
 
-## Unreleased
-* Added image size classname to wrapper div.
-* Added PHPCompatibility to phpcs config.
+## [1.2.1]
+### Internal
+* Added image size classname to wrapper div. [#5](https://github.com/DekodeInteraktiv/hogan-image/pull/5)
+* Added PHPCompatibility to phpcs config. [#6](https://github.com/DekodeInteraktiv/hogan-image/pull/6)
 
 ## [1.2.0]
 ### Breaking Changes
-- Remove heading field, provided from Core in [#53](https://github.com/DekodeInteraktiv/hogan-core/pull/53)
-- Heading field has to be added using filter (was default on before).
+* Remove heading field, provided from Core in [#53](https://github.com/DekodeInteraktiv/hogan-core/pull/53)
+* Heading field has to be added using filter (was default on before).
 
 ## [1.1.0]
 ### Breaking Change
