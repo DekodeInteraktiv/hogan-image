@@ -2,6 +2,7 @@
 
 ## Unreleased
 * Added image size classname to wrapper div.
+* Added PHPCompatibility to phpcs config.
 
 ## [1.2.0]
 ### Breaking Changes
