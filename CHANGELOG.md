@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.2]
+* Update module to new registration method introduced in [Hogan Core #79](https://github.com/DekodeInteraktiv/hogan-core/pull/79)
+* Set hogan-core dependency `"dekodeinteraktiv/hogan-core": ">=1.1.7"`
+
 ## [1.2.1]
 ### Internal
 * Added image size classname to wrapper div. [#5](https://github.com/DekodeInteraktiv/hogan-image/pull/5)

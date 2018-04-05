@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/dekodeinteraktiv/hogan-image
  * GitHub Plugin URI: https://github.com/dekodeinteraktiv/hogan-image
  * Description: Image Module for Hogan.
- * Version: 1.2.1
+ * Version: 1.2.2
  * Author: Dekode
  * Author URI: https://dekode.no
  * License: GPL-3.0-or-later
@@ -36,9 +36,10 @@ function hogan_load_textdomain() {
 
 /**
  * Register module in Hogan
+ *
+ * @param \Dekode\Hogan\Core $core Hogan Core instance.
  */
-function hogan_register_module() {
-	// Include image and register module class.
+function hogan_register_module( \Dekode\Hogan\Core $core ) {
 	require_once 'class-image.php';
-	\hogan_register_module( new \Dekode\Hogan\Image() );
+	$core->register_module( new \Dekode\Hogan\Image() );
 }
