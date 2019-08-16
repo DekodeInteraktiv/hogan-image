@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.2.3]
+* Added new filters to inject content inside figure element [PR #79](https://github.com/DekodeInteraktiv/hogan-image/pull/8)
+
 ## [1.2.2]
 * Update module to new registration method introduced in [Hogan Core #79](https://github.com/DekodeInteraktiv/hogan-core/pull/79)
 * Set hogan-core dependency `"dekodeinteraktiv/hogan-core": ">=1.1.7"`

@@ -35,3 +35,5 @@ Default (will be merged with return filter return values):
 - `hogan/module/image/figure_caption_classes` : Add classes names to the figure tag. Default: `wp-caption-text`.
 - `hogan/module/image/image/args` : Attributes for the image markup.
 - `hogan/module/image/template/caption` : Filter to change caption content. Defaults to the text inserted in the caption field in admin.
+- 'hogan/module/image/figure_before_content' : Action hooks to inject content inside the figure element before the image.
+- 'hogan/module/image/figure_after_content' : Action hooks to inject content inside the figure element after the image.
