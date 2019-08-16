@@ -25,6 +25,8 @@ printf( '<figure class="%s">',
 		apply_filters( 'hogan/module/image/figure_classes', [ 'wp-caption', 'size-' . $this->image['size'] ], $this )
 	) )
 );
+
+do_action( 'hogan/module/image/figure_before_content', $this );
 echo wp_get_attachment_image(
 	$this->image['id'],
 	$this->image['size'],
@@ -40,4 +42,5 @@ if ( ! empty( $caption ) ) {
 	] );
 }
 
+do_action( 'hogan/module/image/figure_after_content', $this );
 echo '</figure>';
